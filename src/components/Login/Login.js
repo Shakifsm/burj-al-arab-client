@@ -31,7 +31,6 @@ const Login = () => {
                 const signedInUser = { name: displayName, email };
                 setLoggedInUser(signedInUser);
                 sotreAuthToken();
-                history.replace(from);
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
@@ -49,6 +48,7 @@ const Login = () => {
         firebase.auth().currentUser.getIdToken(true)
         .then(function(idToken) {
             sessionStorage.setItem('token', idToken);
+            history.replace(from);
           }).catch(function(error) {
             // Handle error
           });
